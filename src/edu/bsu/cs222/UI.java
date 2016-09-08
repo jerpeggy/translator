@@ -50,7 +50,8 @@ public class UI extends Application {
     }
 
     private void configureComboBox() {
-        translatorSelector.getItems().addAll("Identity");
+        translatorSelector.getItems().addAll("Identity","Pirate","Canadian","Minnesotian","So. Cal.");
+
     }
 
     private void configureTranslateButton() {
@@ -63,12 +64,8 @@ public class UI extends Application {
     }
 
     private void translateInputFieldToOutputFiled() {
-        Translator translator = new IdentityTranslator();
-        if (translatorSelector.getValue().equals("Identity")){
-            translator = new IdentityTranslator();
-        }
-
-        String translation = translator.translate(inputField.getText());
+        Translator translator = new Translator();
+        String translation = translator.translate(translatorSelector.getValue(),inputField.getText());
         outputField.setText(translation);
     }
 
